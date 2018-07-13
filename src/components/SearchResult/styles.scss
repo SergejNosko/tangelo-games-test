@@ -1,0 +1,20 @@
+.card {
+    width: 100%;
+    background: #e7e7e8;
+    padding: 15px 30px 5px 30px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    &-title {
+        color: #000;
+        margin: 0;
+        font: 500 25px sans-serif;
+    }
+
+    &-description {
+        color: #000;
+        margin: 0;
+        font: 300 16px sans-serif;
+    }
+}

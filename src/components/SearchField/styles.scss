@@ -1,0 +1,21 @@
+.search {
+    min-width: 250px;
+    display: flex;
+
+    &-field {
+        width: 100%;
+        background: none;
+        border: 3px solid #D96F32;
+        border-radius: 20px;
+        padding: 5px 8px;
+        color: #fff;
+    }
+
+    &-reset-button {
+        border: none;
+        background: none;
+        color: #D96F32;
+        margin-left: -25px;
+        font: 500 15px sans-serif;
+    }
+}

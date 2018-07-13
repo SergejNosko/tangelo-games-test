@@ -1,0 +1,24 @@
+.main {
+    min-height: 100vh;
+    width: 100%;
+    background: #092B40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-title {
+        color: #fff;
+        font: 16px sans-serif;
+    }
+}
+
+.result-list {
+    max-width: 1150px;
+    list-style-type: none;
+    margin: 25px 0 0 0;
+    padding: 0;
+
+    &-item {
+        margin-bottom: 10px;
+    }
+}
