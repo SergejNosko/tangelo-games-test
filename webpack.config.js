@@ -39,7 +39,10 @@ const config = {
   devServer: {
     contentBase: '/',
     historyApiFallback: true,
-    port: 8080
+    port: 8080,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
   plugins: [
     new CopyWebpackPlugin(['index.html'])

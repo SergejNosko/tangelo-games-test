@@ -1,8 +1,14 @@
 import { connect } from 'react-redux'
 import Root from '../components/Root'
 
+import { setSearchValue } from '../actions/search'
+
 export default connect(({
-  search: { data }
+  search: {
+    data,
+    suggestions
+  }
 }) => ({
-  data
-}))(Root)
+  data,
+  suggestions
+}), { setSearchValue })(Root)

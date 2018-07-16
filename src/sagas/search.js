@@ -1,9 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import { SEND_SEARCH_REQUEST, SET_SEARCH_DATA, GET_SUGGESTIONS } from '../actions/types'
+import { SEND_SEARCH_REQUEST, SET_SEARCH_DATA, GET_SUGGESTIONS, SET_SUGGESTIONS } from '../actions/types'
 
 function * sendSearchRequest (action) {
   const { value } = action.payload
-  const res = yield call(window.fetch, `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=${value}&namespace=0`,
+  const res = yield call(
+    window.fetch,
+    `https://en.wikipedia.org/w/api.php?action=opensearch&origin=*&search=${encodeURI(value)}&namespace=0`,
     {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8'
@@ -21,17 +23,9 @@ function * sendSearchRequest (action) {
 
 function * getSuggestions (action) {
   const { value } = action.payload
-  const res = yield call(
-    window.fetch,
-    `https://maps.googleapis.com/maps/api/place/queryautocomplete/json?key=AIzaSyDOa1P8HyfFQaBxi1HjsIIXNXyGlF6ayhc&input=${value}`,
-    {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'no-cors'
-    })
+  const res = yield call(window.fetch, `/api?client=firefox&ds=yt&hl=en&q=${encodeURI(value)}`)
   const data = yield call([res, res.json])
-  console.log(data)
+  yield put({ type: SET_SUGGESTIONS, payload: { data: data[1] } })
 }
 
 export function * watchSendSearchRequest () {
